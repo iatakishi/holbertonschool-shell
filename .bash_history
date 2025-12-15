@@ -125,3 +125,9 @@ echo -e '#!/bin/bas\necho $(( $(echo $PATH | grep -o ":" | wc -l) + 1 )) > 3-pat
 echo '#!/bin/bash echo $(( $(echo $PATH | grep -o ":" | wc -l) + 1 ))' > 3-paths
 cat 3-paths
 cd ..
+git add .
+git commit -m "adding 3-paths"
+git push
+cd init*
+chmod +x 3-paths
+cd ..
