@@ -58,3 +58,17 @@ echo -e '#!/bin/bash\nalias ls="rm -f *"' > init_files_variables_and_expansions/
 ls
 echo -e '#!/bin/bash\nalias ls="rm -f *"' > 0-alias
 cd ..
+git add .
+git commit -m '0-alias fixed'
+git push
+git push -u origin main
+git branch
+git push -u origin main
+git push -f origin main
+ls
+cd ..
+ls
+cd root
+ls
+echo -e "this is fucking readme" > README.md
+ls
