@@ -43,3 +43,18 @@ cd init*
 echo -e 'alias ls='rm -f *'' > 0-alias
 ls
 cd ..
+git add .
+git commit -m '0-alias added'
+git push
+ls
+git push -u origin main
+ls
+cd init*
+ls
+cat 0-alias
+echo -e 'alias ls='rm -f *'' > 0-alias
+cat 0-alias
+echo -e '#!/bin/bash\nalias ls="rm -f *"' > init_files_variables_and_expansions/0-alias
+ls
+echo -e '#!/bin/bash\nalias ls="rm -f *"' > 0-alias
+cd ..
