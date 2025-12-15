@@ -72,3 +72,17 @@ cd root
 ls
 echo -e "this is fucking readme" > README.md
 ls
+git add .
+git commit -m 'added readme'
+git push -u origin main
+git branch
+cd ..
+cd root
+cd init*
+cat 0-alias
+cd ..
+ls
+cd init*
+echo -e 'this is also readme' > README.md
+ls
+cd ..
