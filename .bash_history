@@ -116,3 +116,12 @@ cat 2-path
 chmod +x 2-path
 ls
 cd ..
+git add .
+git commit -m 'adding 2-path'
+git push
+cd init*
+echo -e '#!/bin/bas\necho $(( $(echo $PATH | grep -o ":" | wc -l) + 1 )) > 3-paths
+
+echo '#!/bin/bash echo $(( $(echo $PATH | grep -o ":" | wc -l) + 1 ))' > 3-paths
+cat 3-paths
+cd ..
