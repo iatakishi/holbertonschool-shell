@@ -100,3 +100,19 @@ echo -e '#!/bin/bash\necho "hello $USER"' > 1-hello_you
 cat 1-hello_you
 ./1-hello_you
 cd ..
+git add .
+git commit -m 'added 1-hello_you'
+git push
+ls
+cd init*
+ls
+cd ..
+ls
+cd init*
+ls
+echo '#!/bin/bash' > 2-path
+echo 'export PATH="$PATH:/action"' >> 2-path
+cat 2-path
+chmod +x 2-path
+ls
+cd ..
