@@ -86,3 +86,17 @@ cd init*
 echo -e 'this is also readme' > README.md
 ls
 cd ..
+git add .
+git commit -m 'another readme'
+git push -u origin main
+git push -f origin main
+cd init*
+echo -e '#!/bin/bash\nhello $USER' > 1-hello_you
+chmod +x 1-hello_you
+./1-hello_you
+ls
+cat 1-hello_you
+echo -e '#!/bin/bash\necho "hello $USER"' > 1-hello_you
+cat 1-hello_you
+./1-hello_you
+cd ..
