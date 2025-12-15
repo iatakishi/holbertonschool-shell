@@ -131,3 +131,13 @@ git push
 cd init*
 chmod +x 3-paths
 cd ..
+git add .
+git commmit -m "fixing 3-paths"
+git push
+git commit -m "fixing 3-paths"
+git push
+cd init*
+echo '#!/bin/bash
+echo "$PATH" | tr : "\n" | grep / | wc -l' > 3-paths
+chmod +x 3-paths
+cd ..
