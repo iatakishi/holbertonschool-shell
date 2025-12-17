@@ -141,3 +141,17 @@ echo '#!/bin/bash
 echo "$PATH" | tr : "\n" | grep / | wc -l' > 3-paths
 chmod +x 3-paths
 cd ..
+git fetch origin
+git reset --hard origin/main
+git clean -fd
+ls
+cd init*
+$USER
+echo $USER
+cat $USER
+printenv
+env
+echo -e '#!/bin/bash\nenv' > 4-global_variables
+chmod +x 4-global_variables
+./4-global_variables
+cd ..
