@@ -240,3 +240,14 @@ echo -e '#!/bin/bash\necho $((2#$BINARY))' > 11-binary_to_decimal
 chmod +x 11-binary_to_decimal
 ./11-binary_to_decimal
 cd ..
+git add .
+git commit -m 'binary to decimal conversion'
+git push -u origin main
+cd init*
+ehco -e '#!/bin/bash\nfor i in {a:z}';do for j in {a:z};do [$i$j!=oo]&&echo $i$j;done;done' > 12-combinations
+#!/bin/bash
+for i in {a..z};do for j in {a..z};do [ $i$j != oo ]&&echo $i$j;done;done
+echo -e '#!/bin/bash\nfor i in {a..z};do for j in {a..z};do [ $i$j != oo ]&&echo $i$j;done;done' > 12-combinations
+chmod +x 12-combinations
+./12-combinations
+cd ..
