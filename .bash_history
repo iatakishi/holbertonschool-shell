@@ -258,3 +258,10 @@ cd init*
 echo -e '#!/bin/bash\nfor i in {a..z}\ndo\n  for j in {a..z}\n  do\n    if [ "$i$j" != "oo" ]\n    then\n      echo "$i$j"\n    fi\n  done\ndone' > 12-combinations
 ./12-combinations
 cd ..
+git add .
+git commit -m 'combinations v2'
+git push -u origin main
+cd init*
+echo -e '#!/bin/bash\nprintf "%s\n" {a..z}{a..z} | grep -v "^oo$"' > 12-combinations && chmod +x 12-combinations
+./12-combinations
+cd ..
