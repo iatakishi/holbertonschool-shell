@@ -278,3 +278,14 @@ cat 12-combinations
 echo -e '#!/bin/bash\nprintf "%s" {a..z}{a..z} | grep -v "^oo$' > 12-combinations
 wc -l 12-combinations
 cd ..
+git add .
+git commit -m 'combinations v3 or v4'
+git push -u origin main
+cd init*
+echo -e '#!/bin/bash\nprintf "%s\n" {a..z}{a..z} | grep -v "^oo$"' > 12-combinations
+wc -l 12-combinations
+cat 12-combinations
+echo -e '#!/bin/bash\nprintf "%s\\n" {a..z}{a..z} | grep -v "^oo$"' > 12-combinations
+wc -l 12-combinations
+cat 12-combinations
+cd ..
