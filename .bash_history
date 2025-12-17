@@ -164,3 +164,26 @@ echo -e '#!/bin/bash\nset' > 5-local_variables
 chmod +x 5-local_variables
 ./5-local_variables
 cd ..
+git add .
+git commit -m 'added local variables function'
+git push -u origin main
+cd init*
+echo -e '#!/bin/bash\nBEST='School'' > 6-create_local_variable
+chmod +x 6-create_local_variable
+./6-create_local_variable
+BEST
+echo BEST
+$BEST
+cat $BEST
+echo $BEST
+cat 6-create_local_variable
+echo -e '#!/bin/bash\nBEST="School"' > 6-create_local_variable
+cat 6-create_local_variable
+./6-create_local_variable
+cat $BEST
+echo $BEST
+cat 6-create_local_variable
+echo $BEST
+source ./6-create_local_variable
+echo $BEST
+cd ..
