@@ -210,3 +210,14 @@ export TRUEKNOWLEDGE=1209
 chmod +x 8-true_knowledge
 ./8-true_knowledge
 cd ..
+git add .
+git commit -m 'adding true knowledge calculation mechanism'
+git push -u origin main
+cd init*
+export POWER=42784
+export DIVIDE=32
+echo -e '#!/bin/bash\necho $((POWER/DIVIDE))' > 9-divide_and_rule
+cat 9-divide_and_rule
+chmod +x 9-divide_and_rule
+./9-divide_and_rule
+cd ..
