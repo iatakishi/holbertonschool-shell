@@ -251,3 +251,10 @@ echo -e '#!/bin/bash\nfor i in {a..z};do for j in {a..z};do [ $i$j != oo ]&&echo
 chmod +x 12-combinations
 ./12-combinations
 cd ..
+git add .
+git commit -m 'combinations'
+git push -u origin main
+cd init*
+echo -e '#!/bin/bash\nfor i in {a..z}\ndo\n  for j in {a..z}\n  do\n    if [ "$i$j" != "oo" ]\n    then\n      echo "$i$j"\n    fi\n  done\ndone' > 12-combinations
+./12-combinations
+cd ..
