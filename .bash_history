@@ -231,3 +231,12 @@ echo -e '#!/bin/bash\necho $((BREATH**LOVE))' > 10-love_exponent_breath
 chmod +x 10-love_exponent_breath
 ./10-love_exponent_breath
 cd ..
+git add .
+git commit -m 'love exponent to breath'
+git push -u origin main
+cd init*
+export BINARY=10100111001
+echo -e '#!/bin/bash\necho $((2#$BINARY))' > 11-binary_to_decimal
+chmod +x 11-binary_to_decimal
+./11-binary_to_decimal
+cd ..
