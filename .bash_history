@@ -221,3 +221,13 @@ cat 9-divide_and_rule
 chmod +x 9-divide_and_rule
 ./9-divide_and_rule
 cd ..
+git add .
+git commit -m 'adding divide and rule'
+git push -u origin main
+cd init*
+export BREATH=4
+export LOVE=3
+echo -e '#!/bin/bash\necho $((BREATH**LOVE))' > 10-love_exponent_breath
+chmod +x 10-love_exponent_breath
+./10-love_exponent_breath
+cd ..
