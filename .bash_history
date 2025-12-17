@@ -187,3 +187,17 @@ echo $BEST
 source ./6-create_local_variable
 echo $BEST
 cd ..
+git add .
+git commit -m 'creating local variable best outputing shcool'
+git push -u origin main
+cd init*
+echo -e '#!/bin/bashn\nexport BEST="School"' > 7-create_global_variable
+chmod +x 7-create_global_variable
+./7-create_global_variable
+ls
+chmod +x 7-create_global_variable
+./7-create_global_variable
+echo -e '#!/bin/bash\nexport BEST="School"' > 7-create_global_variable
+./7-create_global_variable
+echo $BEST
+cd ..
