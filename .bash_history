@@ -201,3 +201,12 @@ echo -e '#!/bin/bash\nexport BEST="School"' > 7-create_global_variable
 ./7-create_global_variable
 echo $BEST
 cd ..
+git add .
+git commit -m 'creating global variable'
+git push -u origin main
+cd init*
+echo -e '#!/bin/bash\necho $((128+TRUEKNOWLEDGE))' > 8-true_knowledge
+export TRUEKNOWLEDGE=1209
+chmod +x 8-true_knowledge
+./8-true_knowledge
+cd ..
