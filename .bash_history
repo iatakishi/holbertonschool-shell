@@ -155,3 +155,12 @@ echo -e '#!/bin/bash\nenv' > 4-global_variables
 chmod +x 4-global_variables
 ./4-global_variables
 cd ..
+git add .
+git commit -m 'adding global variable function'
+git push -u origin main
+set
+cd init*
+echo -e '#!/bin/bash\nset' > 5-local_variables
+chmod +x 5-local_variables
+./5-local_variables
+cd ..
