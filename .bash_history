@@ -289,3 +289,15 @@ echo -e '#!/bin/bash\nprintf "%s\\n" {a..z}{a..z} | grep -v "^oo$"' > 12-combina
 wc -l 12-combinations
 cat 12-combinations
 cd ..
+git add .
+git commit -m 'combinations...'
+git push -u origin main
+cd init*
+export NUM=0
+echo -e '#!/bin/bash\nprintf "%.2f\n" "${NUM}"' > 13-print_float
+cat 13-print_float
+echo -e '#!/bin/bash\nprintf "%.2f\\n" "${NUM}"' > 13-print_float
+cat 13-print_float
+chmod +x 13-print_float
+./13-print_float
+cd ..
