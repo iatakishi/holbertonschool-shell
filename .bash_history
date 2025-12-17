@@ -301,3 +301,16 @@ cat 13-print_float
 chmod +x 13-print_float
 ./13-print_float
 cd ..
+git add .
+git commit -m 'printing float'
+git push -u origin main
+cd init*
+export DECIMAL=16
+#echo -e '#!/bin/bash\nprintf "%x\\n" ""' > 14-decimal_to_hexadecimal
+#echo -e '#!/bin/bash\nprintf "%x\\n" "${DECIMAL}"' > 14-decimal_to_hexadecimal
+chmod +x 14-decimal_to_hexadecimal
+#echo -e '#!/bin/bash\nprintf "%x\\n" "${DECIMAL}"' > 14-decimal_to_hexadecimal
+echo -e '#!/bin/bash\nprintf "%x\\n" "${DECIMAL}"' > 14-decimal_to_hexadecimal
+chmod +x 14-decimal_to_hexadecimal
+./14*
+cd ..
