@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/env bash
+# This will output Best School 10 times
 for i in {1..10}; do
 	echo "Best School"
 done

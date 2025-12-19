@@ -337,3 +337,12 @@ mv loop_conditions_and_parsing loops_conditions_and_parsing
 cd ..
 mv loop_conditions_and_parsing loops_conditions_and_parsing
 ls
+git add .
+git commit
+git commit -m 'adjusted folder name'
+git push origin main
+cd loops*
+ls
+nano 1*
+cat 1*
+cd ..
