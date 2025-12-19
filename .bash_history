@@ -346,3 +346,19 @@ ls
 nano 1*
 cat 1*
 cd ..
+git add .
+git commit -m 'small changes 1'
+git push origin main
+cd loops
+cd loops*
+nano 1*
+cat 1*
+git add .
+git commit -m 'small changes 1'
+git push origin main
+cd ..
+sudo apt update && sudo apt install shellcheck
+shellcheck 1*
+cd loops*
+shellcheck 1*
+cd ..
