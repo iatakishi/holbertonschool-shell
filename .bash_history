@@ -329,3 +329,11 @@ chmod +x 1-for_best_school
 chmod +x 1*
 ./1*
 cd ..
+git add .
+git commit -m 'for loop for best school 1'
+git push origin main
+cd loop*
+mv loop_conditions_and_parsing loops_conditions_and_parsing
+cd ..
+mv loop_conditions_and_parsing loops_conditions_and_parsing
+ls
