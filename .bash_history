@@ -314,3 +314,18 @@ echo -e '#!/bin/bash\nprintf "%x\\n" "${DECIMAL}"' > 14-decimal_to_hexadecimal
 chmod +x 14-decimal_to_hexadecimal
 ./14*
 cd ..
+git reset --hard origin/main
+ls
+mkdir loop_conditions_and_parsing
+ls
+cd loop*
+touch 1-for_best_school
+ls
+nano 1-for_best_school
+cat 1-for_best_school
+chmod +x 1-for_best_school
+./1-for_best_school
+./1-for*
+chmod +x 1*
+./1*
+cd ..
