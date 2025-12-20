@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 # Displays files in current directory after first dash
 for file in *-*; do
-	echo "${file#*-}"
+	if [[ $file == *-* ]]; then
+		echo "${file#*-}"
+	else
+		echo "$file"
+	fi
 done
