@@ -1,4 +1,3 @@
-
 #!/usr/bin/env bash
 # Tell the story of each user in /etc/passwd
 while IFS=: read -r username password userid groupid info homedir shell; do
