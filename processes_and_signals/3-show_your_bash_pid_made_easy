@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# List PIDs and names of processes containing "bash" (no ps)
+for p in /proc/[0-9]*; do
+  name=$(cat "$p/comm" 2>/dev/null) || continue
+  [[ $name == *bash* ]] && echo "$(basename "$p") $name"
+done
