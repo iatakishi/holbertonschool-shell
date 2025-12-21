@@ -1,27 +1,21 @@
 #!/usr/bin/env bash
-# Creates /var/run/myscript.pid, prints messages on signals, cleans up, loops forever.
-
 PIDFILE="/var/run/myscript.pid"
 
-# Create PID file (requires sudo if /var/run is root-owned)
-echo "$$" > "$PIDFILE"
+# try to create pidfile, fallback to sudo if needed
+if ! echo "$$" > "$PIDFILE" 2>/dev/null; then
+  echo "$$" | sudo tee "$PIDFILE" >/dev/null
+fi
 
 cleanup_and_exit() {
-  # Remove PID file if it exists, then exit
-  [ -f "$PIDFILE" ] && rm -f "$PIDFILE"
+  # try remove; fallback to sudo
+  rm -f "$PIDFILE" 2>/dev/null || sudo rm -f "$PIDFILE"
   exit 0
 }
 
-# On SIGTERM: print, clean up, terminate
 trap 'echo "I hate the kill command"; cleanup_and_exit' SIGTERM
-
-# On SIGINT (Ctrl+C): print, KEEP RUNNING
-trap 'echo "Y U no love me?!"' SIGINT
-
-# On SIGQUIT: clean up and terminate (no extra message required by spec)
+trap 'echo "Y U no love me?!";' SIGINT
 trap 'cleanup_and_exit' SIGQUIT
 
-# Main loop
 while true; do
   echo "To infinity and beyond"
   sleep 2
