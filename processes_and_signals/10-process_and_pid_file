@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Creates /var/run/myscript.pid, prints messages on signals, cleans up, loops forever.
+
 PIDFILE="/var/run/myscript.pid"
 
 # try to create pidfile, fallback to sudo if needed
