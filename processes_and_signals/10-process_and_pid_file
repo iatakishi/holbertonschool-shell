@@ -1,16 +1,13 @@
 #!/usr/bin/env bash
-# Creates /var/run/myscript.pid, prints messages on signals, cleans up, loops forever.
-
 PIDFILE="/var/run/myscript.pid"
 
-# try to create pidfile, fallback to sudo if needed
+# Create pidfile; fallback to sudo if needed (non-interactive if allowed)
 if ! echo "$$" > "$PIDFILE" 2>/dev/null; then
-  echo "$$" | sudo tee "$PIDFILE" >/dev/null
+  echo "$$" | sudo -n tee "$PIDFILE" >/dev/null || exit 1
 fi
 
 cleanup_and_exit() {
-  # try remove; fallback to sudo
-  rm -f "$PIDFILE" 2>/dev/null || sudo rm -f "$PIDFILE"
+  rm -f "$PIDFILE" 2>/dev/null || sudo -n rm -f "$PIDFILE"
   exit 0
 }
 
@@ -22,3 +19,4 @@ while true; do
   echo "To infinity and beyond"
   sleep 2
 done
+
