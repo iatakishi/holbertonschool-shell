@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Fucking comment
 PIDFILE="/var/run/myscript.pid"
 
 # Create pidfile; fallback to sudo if needed (non-interactive if allowed)
