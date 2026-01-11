@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # Script that creates a PID file and handles signals
 
+# Create /var/run directory if it doesn't exist
+mkdir -p /var/run
+
 PID_FILE="/var/run/myscript.pid"
 
 # Cleanup function - removes PID file and exits
@@ -14,18 +17,8 @@ trap 'echo "I hate the kill command"; cleanup' SIGTERM
 trap 'echo "Y U no love me?!"' SIGINT
 trap cleanup SIGQUIT
 
-# Ensure /var/run directory exists and is writable
-# Create the directory if it doesn't exist
-mkdir -p /var/run 2>/dev/null || true
-
-# Try to make it writable
-chmod 777 /var/run 2>/dev/null || true
-
 # Create the PID file with the current process ID
 echo $$ > "$PID_FILE"
-
-# Ensure the PID file is readable
-chmod 644 "$PID_FILE" 2>/dev/null || true
 
 # Main loop - display message indefinitely
 while true; do
