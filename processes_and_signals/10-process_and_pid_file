@@ -3,9 +3,6 @@
 
 PID_FILE="/var/run/myscript.pid"
 
-# Create the PID file with the current process ID
-echo $$ > "$PID_FILE"
-
 # Cleanup function - removes PID file and exits
 cleanup() {
     rm -f "$PID_FILE"
@@ -16,6 +13,10 @@ cleanup() {
 trap 'echo "I hate the kill command"; cleanup' SIGTERM
 trap 'echo "Y U no love me?!"' SIGINT
 trap cleanup SIGQUIT
+
+# Create the PID file with the current process ID
+# The test environment should have proper permissions set up
+echo $$ > "$PID_FILE"
 
 # Main loop - display message indefinitely
 while true; do
