@@ -1,27 +1,20 @@
 #!/usr/bin/env bash
-# Script that creates a PID file and handles signals
+# Try to create PID file - don't suppress errors
+echo $$ > /var/run/myscript.pid
 
-# Create /var/run directory if it doesn't exist
-mkdir -p /var/run
+# If we get here, the file was created successfully
+# Now set up signal handlers
 
-PID_FILE="/var/run/myscript.pid"
-
-# Cleanup function - removes PID file and exits
 cleanup() {
-    rm -f "$PID_FILE"
+    rm -f /var/run/myscript.pid
     exit 0
 }
 
-# Signal handlers
 trap 'echo "I hate the kill command"; cleanup' SIGTERM
 trap 'echo "Y U no love me?!"' SIGINT
 trap cleanup SIGQUIT
 
-# Create the PID file with the current process ID
-echo $$ > "$PID_FILE"
-
-# Main loop - display message indefinitely
 while true; do
     echo "To infinity and beyond"
-    sleep 2
+    sleep 1
 done
