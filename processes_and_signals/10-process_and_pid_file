@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Create PID file - always try /var/run first
 PID_FILE="/var/run/myscript.pid"
 if ! echo $$ > "$PID_FILE" 2>/dev/null; then
