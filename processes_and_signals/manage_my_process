@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# This script runs indefinitely, writing "I am alive!" to /tmp/my_process every 2 seconds
+
+# Create the file if it doesn't exist (optional, but good practice)
+touch /tmp/my_process
+
+# Infinite loop
+while true; do
+    echo "I am alive!" >> /tmp/my_process
+    sleep 2
+done

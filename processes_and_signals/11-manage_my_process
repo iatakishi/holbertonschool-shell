@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+# This is the init script that manages the manage_my_process daemon
+
+# Function to start the process
+start_process() {
+    # Start manage_my_process in the background
+    ./manage_my_process &
+    
+    # Save the PID to the required file
+    echo $! > /var/run/my_process.pid
+    
+    # Display success message
+    echo "manage_my_process started"
+}
+
+# Function to stop the process
+stop_process() {
+    # Check if PID file exists
+    if [ -f /var/run/my_process.pid ]; then
+        # Get the PID from the file
+        PID=$(cat /var/run/my_process.pid)
+        
+        # Kill the process
+        kill $PID 2>/dev/null
+        
+        # Wait a bit for process to terminate
+        sleep 1
+        
+        # Remove the PID file
+        rm -f /var/run/my_process.pid
+    fi
+    
+    # Display success message
+    echo "manage_my_process stopped"
+}
+
+# Function to restart the process
+restart_process() {
+    # Stop the process
+    stop_process
+    
+    # Wait a moment
+    sleep 1
+    
+    # Start the process again
+    start_process
+    
+    # Display success message
+    echo "manage_my_process restarted"
+}
+
+# Check command line argument
+case "$1" in
+    "start")
+        start_process
+        ;;
+    "stop")
+        stop_process
+        ;;
+    "restart")
+        restart_process
+        ;;
+    *)
+        # Invalid or no argument
+        echo "Usage: manage_my_process {start|stop|restart}"
+        exit 1
+        ;;
+esac
+
+exit 0
