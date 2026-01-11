@@ -1,21 +1,20 @@
 #!/usr/bin/env bash
 # Creates /var/run/myscript.pid; handles signals; cleans up; loops.
+echo $$ > /var/run/myscript.pid
 
-PIDFILE="/var/run/myscript.pid"
+# Function to handle cleanup
+cleanup() {
+    rm -f /var/run/myscript.pid
+    exit 0
+}
 
-# create pidfile or fail (no sudo, inside-file only)
-if ! printf '%s\n' "$$" >"$PIDFILE" 2>/dev/null; then
-  echo "Permission denied: $PIDFILE" >&2
-  exit 1
-fi
-
-cleanup(){ rm -f "$PIDFILE"; exit 0; }
-
+# Signal handlers
 trap 'echo "I hate the kill command"; cleanup' SIGTERM
-trap 'echo "Y U no love me?!";' SIGINT
-trap 'cleanup' SIGQUIT
+trap 'echo "Y U no love me?!"' SIGINT
+trap cleanup SIGQUIT
 
+# Infinite loop with message
 while true; do
-  echo "To infinity and beyond"
-  sleep 2
+    echo "To infinity and beyond"
+    sleep 1
 done
