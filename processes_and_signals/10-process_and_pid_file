@@ -1,19 +1,16 @@
 #!/usr/bin/env bash
-# Try to create PID file - don't suppress errors
+# Create PID file
 echo $$ > /var/run/myscript.pid
 
-# If we get here, the file was created successfully
-# Now set up signal handlers
+# Small delay to ensure file is written to disk
+sleep 0.5
 
-cleanup() {
-    rm -f /var/run/myscript.pid
-    exit 0
-}
-
-trap 'echo "I hate the kill command"; cleanup' SIGTERM
+# Signal handlers
+trap 'echo "I hate the kill command"; rm -f /var/run/myscript.pid; exit' SIGTERM
 trap 'echo "Y U no love me?!"' SIGINT
-trap cleanup SIGQUIT
+trap 'rm -f /var/run/myscript.pid; exit' SIGQUIT
 
+# Main loop
 while true; do
     echo "To infinity and beyond"
     sleep 1
