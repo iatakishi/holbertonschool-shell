@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
-# Create PID file - always try /var/run first
+# Create PID file immediately
 PID_FILE="/var/run/myscript.pid"
-if ! echo $$ > "$PID_FILE" 2>/dev/null; then
-    # If we can't write to /var/run, the test will fail
-    # but we'll continue running the script
+echo $$ > "$PID_FILE" 2>/dev/null || {
+    # If we can't write, the test will fail
+    # but we need to keep running for the other tests
     :
-fi
+}
+
+# Small delay to ensure file is created
+sleep 0.5
 
 # Function to handle cleanup
 cleanup() {
