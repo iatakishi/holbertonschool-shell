@@ -1,17 +1,26 @@
 #!/usr/bin/env bash
-# Create PID file
+# Process and PID file
 echo $$ > /var/run/myscript.pid
-
-# Small delay to ensure file is written to disk
-sleep 0.5
-
-# Signal handlers
-trap 'echo "I hate the kill command"; rm -f /var/run/myscript.pid; exit' SIGTERM
-trap 'echo "Y U no love me?!"' SIGINT
-trap 'rm -f /var/run/myscript.pid; exit' SIGQUIT
-
-# Main loop
-while true; do
+trap sigterm 15
+sigterm()
+{
+    echo "I hate the kill command"
+    rm -rf /var/run/myscript.pid
+    exit 0
+}
+trap sigint 2
+sigint()
+{
+    echo "Y U no love me?!"
+}
+trap sigquit 3
+sigquit()
+{
+    rm -rf /var/run/myscript.pid
+    exit 0
+}
+while ((1))
+do
     echo "To infinity and beyond"
-    sleep 1
+    sleep 2
 done
